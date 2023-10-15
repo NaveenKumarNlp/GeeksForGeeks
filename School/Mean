@@ -1,0 +1,9 @@
+class Solution {
+    static int mean(int N , int[] A) {
+        int sum=0;
+        for(int i:A){
+            sum+=i;
+        }
+        return sum/N;
+    }
+};
