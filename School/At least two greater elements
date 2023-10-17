@@ -1,0 +1,30 @@
+
+
+//User function Template for Java
+
+class Solution {
+    public long[] findElements( long a[], long n)
+    {
+        List<Long> l=new ArrayList<Long>();
+        for(int i=0;i<n;i++){
+            int count=0;
+           for(int j=0;j<n;j++){
+               if(a[i]<a[j]){
+                   count++;
+                   if(count==2){
+                    l.add(a[i]);
+                    break;
+                }
+               }
+               
+           } 
+        }
+        long []res=new long[l.size()];
+        Collections.sort(l);
+        for(int i=0;i<l.size();i++){
+            res[i]=l.get(i);
+        }
+        return res;
+        
+    }
+}
