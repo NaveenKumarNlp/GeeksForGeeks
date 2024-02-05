@@ -1,0 +1,113 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(br.readLine().trim());
+        while (tc-- > 0) {
+            String[] inputLine;
+            int n = Integer.parseInt(br.readLine().trim());
+            int[] arr = new int[n];
+            inputLine = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                arr[i] = Integer.parseInt(inputLine[i]);
+            }
+
+            new Solution().segregateEvenOdd(arr, n);
+            for (int i = 0; i < n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+// } Driver Code Ends
+//User function Template for Java
+class Solution {
+    void segregateEvenOdd(int arr[], int n) {
+        int odd=0,i=0;
+        while(i<n){
+            if(arr[i]%2!=0){
+                odd++;
+            }else{
+                int temp=arr[i-odd];
+                arr[i-odd]=arr[i];
+                arr[i]=temp;
+            }
+            i++;
+        }
+        Arrays.sort(arr,0,n-odd);
+        Arrays.sort(arr,n-odd,n);
+    }
+}
+
+
+/*int odd=0,i=0;
+        while(i<n){
+            if(arr[i]%2!=0){
+                odd++;
+            }else{
+                int temp=arr[i-odd];
+                arr[i-odd]=arr[i];
+                arr[i]=temp;
+            }
+            i++;
+        }
+        for(i=0;i<n-odd-1;i++){
+            for(int j=i+1;j<n-odd;j++){
+                if(arr[i]>arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+        for(i=n-odd;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]>arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }*/
+
+    void segregateEvenOdd(int arr[], int n) {
+        int odd=0,even=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]%2==0){
+                even++;
+            }else{
+                odd++;
+            }
+        }
+        int o[]=new int[odd];
+        int e[]=new int[even];
+        int oddindex=0,evenindex=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]%2==0){
+                e[evenindex]=arr[i];
+                evenindex++;
+            }else{
+                o[oddindex]=arr[i];
+                oddindex++;
+            }
+        }
+        Arrays.sort(e);
+        Arrays.sort(o);
+        
+        for(int i=0;i<n;i++){
+            if(i<even){
+                arr[i]=e[i];
+            }else{
+                arr[i]=o[i-even];
+            }
+        }
+    }
