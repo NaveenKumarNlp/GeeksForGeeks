@@ -1,0 +1,82 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+
+
+//Initial Template for Java
+
+
+
+import java.io.*;
+import java.util.*;
+
+
+// } Driver Code Ends
+class Solution 
+{
+    int checkFib(long arr[] ,int N)
+    {
+        HashMap<Long,Integer> map=new HashMap<>();
+        long max=0;
+        for(int i=0;i<N;i++){
+            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+            if(max<arr[i]){
+                max=arr[i];
+            }
+        }
+        long a=0,b=1,sum=0;
+        int count=0;
+        while(sum<=max){
+            if(map.containsKey(sum)){
+                while(map.get(sum)>0){
+                    count++;
+                    map.put(sum,map.get(sum)-1);
+                }
+                map.remove(sum);
+            }
+            sum=a+b;
+            a=b;
+            b=sum;
+        }
+        return count;
+    }
+}
+
+//{ Driver Code Starts.
+
+// Driver class
+class Array {
+
+    // Driver code
+    public static void main (String[] args) throws IOException{
+        // Taking input using buffered reader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int testcases = Integer.parseInt(br.readLine());
+        // looping through all testcases
+        while(testcases-- > 0){
+            int n=Integer.parseInt(br.readLine());
+//            String line = br.readLine();
+//            String[] a2 = line.trim().split("\\s+");
+//            int n =Integer.parseInt(a2[0]);
+//            int k =Integer.parseInt(a2[1]);
+            //int y =Integer.parseInt(a2[2]);
+            String line1 = br.readLine();
+            String[] a1 = line1.trim().split("\\s+");
+            long a[]=new long[n];
+            for(int i=0;i<n;i++)
+            {
+                a[i]=Long.parseLong(a1[i]);
+            }
+            Solution ob=new Solution ();
+            //ArrayList<Long> ans=ob.smallestDifferenceTriplet(a,b,c,n);
+            int ans=ob.checkFib(a,n);
+            System.out.println(ans);
+        }
+    }
+}
+
+
+
+
+// } Driver Code Ends
