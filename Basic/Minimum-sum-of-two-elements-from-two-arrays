@@ -1,0 +1,68 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main(String[] args) throws IOException
+	{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine().trim());
+        while(t-->0)
+        {
+            int n = Integer.parseInt(br.readLine().trim());
+            int a[] = new int[(int)(n)];
+            int b[] = new int[(int)(n)];
+            
+            
+            String inputLine[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                a[i] = Integer.parseInt(inputLine[i]);
+            }
+            String inputLine1[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                b[i] = Integer.parseInt(inputLine1[i]);
+            }
+            
+            
+            Solution obj = new Solution();
+            System.out.println(obj.minSum(a, b, n));
+        }
+	}
+}
+
+// } Driver Code Ends
+class Solution {
+
+    public int minSum(int a[], int b[], int n) {
+        int m1=Integer.MAX_VALUE,m2=Integer.MAX_VALUE,index1=0,index2=0;
+        for(int i=0;i<n;i++){
+            if(a[i]<m1){
+                index1=i;
+                m1=a[i];
+            }
+            if(b[i]<m2){
+                index2=i;
+                m2=b[i];
+            }
+        }
+        if(index1!=index2){
+            return m1+m2;
+        }
+        m1=Integer.MAX_VALUE;
+        m2=Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            if(index1!=i && m1>(a[index1]+b[i])){
+                m1=a[index1]+b[i];
+            }
+            if(index2!=i && m2>(b[index2]+a[i])){
+                m2=b[index2]+a[i];
+            }
+        }
+        return Math.min(m1,m2);
+    }
+}
