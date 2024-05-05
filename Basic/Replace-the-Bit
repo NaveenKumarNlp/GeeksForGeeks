@@ -1,0 +1,49 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG
+{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        while(t-- > 0)
+        {
+            String input[];
+            input = br.readLine().trim().split(" ");
+            int n = Integer.parseInt(input[0]);
+            int k = Integer.parseInt(input[1]);
+            Solution ob = new Solution();
+            
+            System.out.println(ob.replaceBit(n,k));    
+        }
+    }
+}
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution{
+    int replaceBit(int N, int K){
+        ArrayList<Integer> list=new ArrayList<>();
+        while(N>0){
+            list.add(N%2);
+            N/=2;
+        }
+        if(list.size()>=K){
+            if(list.get(list.size()-K)==1){
+                list.set(list.size()-K,0);
+            }
+        }
+        int sum=0,pow=0;
+        for(int x:list){
+            sum+=Math.pow(2,pow)*x;
+            pow++;
+        }
+        return sum;
+    }
+}
