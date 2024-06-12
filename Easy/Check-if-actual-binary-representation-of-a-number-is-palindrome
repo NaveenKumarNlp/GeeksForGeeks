@@ -1,0 +1,46 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+class GfG
+{
+    public static void main (String[] args)
+    {
+        
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while(t-- > 0)
+        {
+            long n = sc.nextLong();
+    		System.out.println (new Sol().binaryPalin (n));
+        }
+        
+    }
+}
+
+// Contributed By: Pranay Bansal
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Sol
+{
+    int binaryPalin (long N)
+    {
+        // Your Code Here       
+        StringBuilder sb=new StringBuilder();
+        while(N>0){
+            sb.append(N%2);
+            N/=2;
+        }
+        if(sb.toString().equals(sb.reverse().toString())){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+}
