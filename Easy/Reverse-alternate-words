@@ -1,0 +1,50 @@
+//{ Driver Code Starts
+//Initial Template for Java
+import java.io.*;
+import java.util.*; 
+
+class GFG{
+    public static void main(String args[]) throws IOException { 
+        Scanner sc = new Scanner(System.in);
+        int t = Integer.parseInt(sc.nextLine().trim());
+        while(t-- > 0){
+            String s = sc.nextLine().trim();
+            Solution obj = new Solution();
+            System.out.println(obj.reverseAlternate(s));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+//User function Template for Java
+class Solution 
+{ 
+    String reverseAlternate(String s) 
+    {
+        // code here
+        char []c=s.toCharArray();
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            if(c[i]==' '){
+                count++;
+            }else if(count%2!=0){
+                int r=i;
+                while(r<s.length() &&c[r]!=' '){
+                    r++;
+                }
+                r--;
+                int temp=r;
+                while(i<r){
+                    char ch=c[i];
+                    c[i]=c[r];
+                    c[r]=ch;
+                    r--;
+                    i++;
+                }
+                i=temp;
+            }
+        }
+        return new String(c);
+    }
+} 
