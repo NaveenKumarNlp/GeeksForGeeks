@@ -1,0 +1,60 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG
+{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out=new PrintWriter(System.out);
+        int t = Integer.parseInt(in.readLine().trim());
+        while(t-- > 0)
+        {
+            String s;
+            s = in.readLine().trim();
+            
+            Solution ob = new Solution();
+            
+            out.println(ob.reverseEqn(s));    
+        }
+        out.close();
+    }
+}
+// } Driver Code Ends
+
+
+//User function Template for Java
+class Solution
+{
+   
+    String reverseEqn(String S)
+    {
+        // your code here
+        StringBuilder result = new StringBuilder();
+        StringBuilder currentNumber = new StringBuilder();
+        
+        for(int i =0; i < S.length() ; i++){
+            char ch = S.charAt(i);
+            
+            if (Character.isDigit(ch)){
+                currentNumber.append(ch);
+            }else{ // if it is an operator 
+                if(currentNumber.length() > 0){
+                    result.insert(0, currentNumber.toString()); // prepend the number 
+                    currentNumber.setLength(0); //clear currentNumber
+                }
+                result.insert(0,ch);// prepend the operator
+            }
+        }
+        
+        // adding if there is any last number left
+        if(currentNumber.length()> 0){
+            result.insert(0,currentNumber.toString()); 
+        }
+        
+        return result.toString(); 
+    }
+}
