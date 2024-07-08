@@ -1,0 +1,68 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+class GfG
+{
+    public static void main (String[] args)
+    {
+        
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while(t-- > 0)
+        {
+            String s = sc.next ();
+    		System.out.println (new Sol().stringSort (s));
+        }
+        
+    }
+}
+// Contributed By: Pranay Bansal
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Sol
+{
+    public static String stringSort (String s)
+    {
+        // your code here
+        List<Character> uppercase = new ArrayList<>();
+        List<Character> lowercase = new ArrayList<>();
+
+        // Split the string into uppercase and lowercase letters
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                uppercase.add(c);
+            } else {
+                lowercase.add(c);
+            }
+        }
+
+        // Sort both lists
+        Collections.sort(uppercase);
+        Collections.sort(lowercase);
+
+        // Merge the sorted lists alternately
+        StringBuilder result = new StringBuilder();
+        int i = 0, j = 0;
+
+        while (i < uppercase.size() && j < lowercase.size()) {
+            result.append(uppercase.get(i++));
+            result.append(lowercase.get(j++));
+        }
+
+        // If there are remaining characters in either list, append them
+        while (i < uppercase.size()) {
+            result.append(uppercase.get(i++));
+        }
+        while (j < lowercase.size()) {
+            result.append(lowercase.get(j++));
+        }
+
+        return result.toString();
+    }
+}
