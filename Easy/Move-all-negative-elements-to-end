@@ -1,0 +1,69 @@
+//{ Driver Code Starts
+// Initial Template for Java
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = Integer.parseInt(sc.nextLine());
+
+        while (T > 0) {
+            String[] input = sc.nextLine().trim().split(" ");
+            int[] a = new int[input.length];
+            for (int i = 0; i < input.length; i++) {
+                a[i] = Integer.parseInt(input[i]);
+            }
+            Solution ob = new Solution();
+            ob.segregateElements(a);
+            for (int num : a) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+            T--;
+        }
+        sc.close();
+    }
+}
+
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution {
+    public void segregateElements(int[] arr) {
+        // Your code goes here
+         int i=0,j=0,pos=0,neg=0,t=arr.length;
+        for(int k=0;k<t;k++){
+            if(arr[k]>=0){
+                pos++;
+            }else{
+                neg++;
+            }
+        }
+        
+        int p[]=new int[pos];
+        int n[]=new int[neg];
+        
+        for(int k=0;k<t;k++){
+            if(arr[k]>=0){
+                p[i++]=arr[k];
+            }else{
+                n[j++]=arr[k];
+            }
+        }
+        i=0;
+        j=0;
+        int k=0;
+        while(i<pos){
+            arr[k++]=p[i++];
+        }
+        while(j<neg){
+            arr[k++]=n[j++];
+        }
+        
+    }
+}
