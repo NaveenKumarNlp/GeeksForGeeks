@@ -1,0 +1,72 @@
+//{ Driver Code Starts
+// Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    // Position this line where user code will be pasted.
+    public static void main(String args[]) throws IOException {
+        BufferedReader read =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        while (t-- > 0) {
+            int N = Integer.parseInt(read.readLine());
+            Solution ob = new Solution();
+            System.out.println(ob.BalancedString(N));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution {
+    static String BalancedString(int N) {
+        // code here
+        StringBuilder sb=new StringBuilder();
+        char c='a';
+        int temp=N;
+        while(N>26){
+            sb.append("abcdefghijklmnopqrstuvwxyz");
+            N-=26;
+        }
+        if(temp%2==0){
+            int len=N/2;
+            while(len--!=0){
+                sb.append(c);
+                c++;
+            }
+            c=(char)((int)'z'-(N/2)+1);
+            while(c<='z'){
+                sb.append(c);
+                c++;
+            }               
+        }else{
+            int sum=0,left=0;
+            while(temp>0){
+                sum+=(temp%10);
+                temp/=10;
+            }
+            char right=' ';
+            if(sum%2==0){
+                left=(N+1)/2;
+                right=(char)((int)'z'-((N-1)/2)+1);
+            }else{
+                left=(N-1)/2;
+                right=(char)((int)'z'-((N+1)/2)+1);
+            }
+            c='a';
+            while(left--!=0){
+                sb.append(c);
+                c++;
+            }
+            while(right<='z'){
+                sb.append(right);
+                right++;
+            }
+        }
+        return sb.toString();
+    }
+}
