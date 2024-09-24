@@ -1,0 +1,44 @@
+//{ Driver Code Starts
+import java.io.*;
+import java.util.*; 
+
+class GFG{
+       public static void main(String args[]) throws IOException { 
+        Scanner sc = new Scanner(System.in);
+        int t = Integer.parseInt(sc.nextLine());
+
+        while(t > 0){
+            String str = sc.nextLine();
+            Solution ob = new Solution();
+            if(ob.sentencePalindrome(str))
+                System.out.println(1);
+            else
+                System.out.println(0);
+            t--;
+        }
+    } 
+} 
+// } Driver Code Ends
+
+
+class Solution { 
+
+    static boolean sentencePalindrome(String s) { 
+        // code here
+        int left=0,right=s.length()-1;
+        while(left<right){
+            while(left<right && (s.charAt(left)<'a' || s.charAt(left)>'z')){
+                left++;
+            }
+            while(left<right && (s.charAt(right)<'a' || s.charAt(right)>'z')){
+                right--;
+            }
+            if(left<right && s.charAt(left)!=s.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
