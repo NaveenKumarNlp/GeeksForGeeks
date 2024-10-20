@@ -1,0 +1,53 @@
+//{ Driver Code Starts
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        while (t-- > 0) {
+            String[] s = br.readLine().trim().split(" ");
+
+            int[] arr = new int[s.length];
+            for (int i = 0; i < arr.length; i++) arr[i] = Integer.parseInt(s[i]);
+
+            Solution obj = new Solution();
+            boolean res = obj.canSplit(arr);
+            System.out.println(res);
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+class Solution {
+    public boolean canSplit(int arr[]) {
+        // code here
+        int left=0,right=arr.length-1;
+        int lsum=arr[0],rsum=arr[right];
+        while(left<right){
+            if(lsum<rsum){
+                left++;
+                if(left<right){
+                    lsum+=arr[left];
+                }
+            }else if(rsum<lsum){
+                right--;
+                if(left<right){
+                    rsum+=arr[right];
+                }
+            }else{
+                if(Math.abs(left-right)==1){
+                    return true;
+                }
+                left++;
+                if(left<right){
+                    lsum+=arr[left];
+                }
+            }
+        }
+        return false;
+    }
+}
