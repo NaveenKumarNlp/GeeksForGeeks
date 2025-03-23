@@ -1,0 +1,94 @@
+//{ Driver Code Starts
+import java.util.*;
+
+class Array {
+    public static void input(int[] A, int n) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            A[i] = sc.nextInt();
+        }
+    }
+
+    public static void print(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            System.out.print(A[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+class Matrix {
+    public static void input(int[][] A, int n, int m) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                A[i][j] = sc.nextInt();
+            }
+        }
+    }
+
+    public static void print(int[][] mat) {
+        for (int[] row : mat) {
+            for (int val : row) {
+                System.out.print(val + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("~");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int m = sc.nextInt();
+            int[] arr = new int[n * m];
+            for (int i = 0; i < n * m; i++) {
+                arr[i] = sc.nextInt();
+            }
+
+            Solution obj = new Solution();
+            int[][] res = obj.spiralFill(n, m, arr);
+
+            Matrix.print(res);
+        }
+        sc.close(); // Close the scanner after use
+    }
+}
+
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution {
+    public int[][] spiralFill(int n, int m, int[] ans) {
+        // code here
+        int [][]arr=new int[n][m];
+        int start=0,end=m-1,x=0;
+        for(int i=0;i<(m+1)/2;i++){
+            for(int col=start;col<=end;col++){
+               if(x<ans.length)
+                arr[start][col]=ans[x++];
+            }
+            for(int row=start+1;row<n-start-1;row++){
+               if(x<ans.length)
+                arr[row][end]=ans[x++];
+            }
+            for(int col=end;col>=start;col--){
+               if(x<ans.length)
+                arr[n-start-1][col]=ans[x++];
+            }
+            for(int row=n-start-2;row>start;row--){
+               if(x<ans.length)
+                arr[row][start]=ans[x++];
+            }
+            start++;
+            end--;
+        }
+        return arr;
+    }
+}
