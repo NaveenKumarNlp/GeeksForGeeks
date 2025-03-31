@@ -1,0 +1,56 @@
+//{ Driver Code Starts
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String args[]) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            int r = sc.nextInt();
+            int c = sc.nextInt();
+
+            int matrix[][] = new int[r][c];
+
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) matrix[i][j] = sc.nextInt();
+            }
+            Solution ob = new Solution();
+            ArrayList<Integer> ans = ob.spirallyTraverse(matrix);
+            for (Integer val : ans) System.out.print(val + " ");
+            System.out.println();
+
+            System.out.println("~");
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution {
+    // Function to return a list of integers denoting spiral traversal of matrix.
+    public ArrayList<Integer> spirallyTraverse(int mat[][]) {
+        // code here
+        int start=0,end=mat[0].length-1,n=mat.length,len=mat[0].length;
+        ArrayList<Integer> list=new ArrayList<>();
+        
+        for(int i=0;i<(len+1)/2 && i<(n+1)/2;i++){
+            for(int col=start;col<=end && list.size()<n*len;col++){
+                list.add(mat[start][col]);
+            }
+            for(int row=start+1;row<n-1-start && list.size()<n*len;row++){
+                list.add(mat[row][end]);
+            }
+            for(int col=end;col>=start && list.size()<n*len;col--){
+                list.add(mat[n-1-start][col]);
+            }
+            for(int row=n-2-start;row>start && list.size()<n*len;row--){
+                list.add(mat[row][start]);
+            }
+            start++;
+            end--;
+        }
+        return list;
+    }
+}
