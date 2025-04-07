@@ -1,0 +1,43 @@
+#User function Template for python3
+
+
+class Solution:
+    
+    #Function to interchange the rows of a matrix.
+    def interchangeRows(self,matrix):
+        # code here
+        length=len(matrix)
+        for i in range(length//2):
+            for j in range(len(matrix[0])):
+                temp=matrix[i][j]
+                matrix[i][j]=matrix[length-i-1][j]
+                matrix[length-i-1][j]=temp
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+
+			
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+
+        n1,m1 = map(int,input().strip().split())
+        matrix = [[0 for j in range(m1)] for i in range(n1)]
+        line1 = [int(x) for x in input().strip().split()]       
+        k = 0
+        for i in range(n1):
+            for j in range (m1):
+                matrix[i][j]=line1[k]
+                k+=1
+        obj = Solution()
+        obj.interchangeRows(matrix)
+        for i in range(n1):
+            for j in range(m1):
+                print(matrix[i][j],end=" ")
+        print()
+        
+        print("~")
+# } Driver Code Ends
