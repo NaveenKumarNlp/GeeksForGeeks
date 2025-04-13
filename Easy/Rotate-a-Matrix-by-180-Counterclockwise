@@ -1,0 +1,52 @@
+//{ Driver Code Starts
+// Initial Template for Java
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine().trim());
+        while (T-- > 0) {
+            int n = Integer.parseInt(br.readLine().trim());
+            int[][] matrix = new int[n][n];
+            for (int i = 0; i < n; i++) {
+                String[] S = br.readLine().trim().split(" ");
+                for (int j = 0; j < n; j++) matrix[i][j] = Integer.parseInt(S[j]);
+            }
+            Solution ob = new Solution();
+            ob.rotateMatrix(matrix);
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    System.out.print(matrix[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            System.out.println("~");
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution {
+    public void rotateMatrix(int[][] mat) {
+        // code here
+        int len=mat[0].length-1;
+        int half=(mat.length+1)/2;
+        for(int i=0;i<half;i++){
+            int end=(i==half-1 && (len+1)%2!=0)?half-1:len+1;
+            for(int j=0;j<end;j++){
+                int temp=mat[i][j];
+                mat[i][j]=mat[len-i][len-j];
+                mat[len-i][len-j]=temp;
+            }
+        }
+    }
+}
