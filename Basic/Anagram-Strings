@@ -19,6 +19,7 @@ class GFG {
 // } Driver Code Ends
 
 
+
 // User function template for Java
 class Solution {
     static int areAnagram(String s1, String s2) {
