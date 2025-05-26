@@ -14,6 +14,7 @@ import java.util.*;
 //User function Template for Java
 
 
+
 class Solution
 {
     long minValueToBalance(long a[] ,int n)
