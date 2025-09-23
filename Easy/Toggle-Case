@@ -1,0 +1,15 @@
+class Solution {
+    public String toggleCase(String s) {
+        // code here
+        char []res=new char[s.length()];
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(c>='a' && c<='z'){
+                res[i]=(char)((int)c-32);
+            }else{
+                res[i]=(char)((int)c+32);
+            }
+        }
+        return new String(res);
+    }
+}
