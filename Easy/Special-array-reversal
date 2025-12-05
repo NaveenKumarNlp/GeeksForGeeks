@@ -1,0 +1,31 @@
+// User function Template for Java
+
+class Solution {
+    public String reverse(String str) {
+        // complete the function here
+        char []ch=str.toCharArray();
+        int first=0,last=str.length()-1;
+        while(first<last){
+            while(first<last){
+                if((ch[first]>='A' && ch[first]<='Z') || (ch[first]>='a' && ch[first]<='z')){
+                    break;
+                }
+                first++;
+            }
+            while(first<last){
+                if((ch[last]>='A' && ch[last]<='Z') || (ch[last]>='a' && ch[last]<='z')){
+                    break;
+                }
+                last--;
+            }
+            if(first<last){
+                char t=ch[first];
+                ch[first]=ch[last];
+                ch[last]=t;
+            }
+            first++;
+            last--;
+        }
+        return new String(ch);
+    }
+}
