@@ -1,0 +1,19 @@
+class Solution {
+    public int repeatedCharacter(String str) {
+        // code here
+        int n=str.length();
+        for (int i = 0; i < n; i++) {
+
+            // Check if this character appears again
+            for (int j = i + 1; j < n; j++) {
+
+                if (str.charAt(i) == str.charAt(j)) {
+                    return i;
+                }
+            }
+        }
+
+        // If no repeating character found
+        return -1;
+    }
+}
