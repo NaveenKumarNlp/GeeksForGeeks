@@ -1,0 +1,17 @@
+class Solution {
+    public void swapDiagonal(int[][] mat) {
+        // code here
+        int rl=mat.length-1;
+        int cl=mat[0].length-1;
+        int ri=0,ci=0,cj=cl;
+        while(ri<=cl){
+            int temp=mat[ri][ci];
+            mat[ri][ci]=mat[ri][cj];
+            mat[ri][cj]=temp;
+            ri++;
+            ci++;
+            cj--;
+        }
+        
+    }
+}
