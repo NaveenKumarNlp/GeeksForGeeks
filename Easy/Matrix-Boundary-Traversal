@@ -1,0 +1,27 @@
+class Solution {
+    public ArrayList<Integer> boundaryTraversal(int mat[][]) {
+        // code here
+        ArrayList<Integer> list=new ArrayList<>();
+        int row=0,col=0;
+        int rl=mat.length-1,cl=mat[0].length-1;
+        while(col<=cl){
+            list.add(mat[row][col++]);
+        }
+        row++;
+        col=cl;
+        while(row<rl){
+            list.add(mat[row++][col]);
+        }
+        col=cl;
+        while(col>=0 && row<=rl){
+            list.add(mat[row][col--]);
+        }
+        row=rl-1;
+        col=0;
+        while(row>0 && col<=cl){
+            list.add(mat[row--][col]);
+        }
+        return list;
+        
+    }
+}
