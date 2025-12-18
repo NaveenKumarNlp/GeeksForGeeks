@@ -1,0 +1,48 @@
+// User function Template for Java
+
+class Solution {
+    static String timeGap(String st, String et) {
+        int s1=((st.charAt(6)-'0'))*10+(st.charAt(7)-'0');
+        int m1=((st.charAt(3)-'0'))*10+(st.charAt(4)-'0');
+        int h1=((st.charAt(0)-'0'))*10+(st.charAt(1)-'0');
+        
+        int s2=((et.charAt(6)-'0'))*10+(et.charAt(7)-'0');
+        int m2=((et.charAt(3)-'0'))*10+(et.charAt(4)-'0');
+        int h2=((et.charAt(0)-'0'))*10+(et.charAt(1)-'0');
+        
+        int start=h1*60*60+m1*60+s1;
+        int end=h2*60*60+m2*60+s2;
+        int b=end-start;
+        
+        int h=0,m=0,s=0;
+        h=b/3600;
+        b%=3600;
+        m=b/60;
+        b%=60;
+        s=b;
+
+        String hour="";
+        String min="";
+        String sec="";
+        
+        if(h<10){
+            hour="0"+h;
+        }else{
+            hour=hour+h;
+        }
+        
+        if(m<10){
+            min="0"+m;
+        }else{
+            min=min+m;
+        }
+        
+        if(s<10){
+            sec="0"+s;
+        }else{
+            sec=sec+s;
+        }
+        
+        return hour+":"+min+":"+sec;
+    }
+}
