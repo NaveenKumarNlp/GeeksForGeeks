@@ -1,0 +1,34 @@
+// User function Template for Java
+
+class Solution {
+    // Function to find common elements in three arrays.
+    public List<Integer> commonElements(List<Integer> arr1, List<Integer> arr2,List<Integer> arr3) {
+        // Code Here
+        ArrayList<Integer> list=new ArrayList<>();
+        int x=0,y=0,z=0;
+        int v1=arr1.size(),v2=arr2.size(),v3=arr3.size();
+        while(x<v1 && y<v2 && z<v3){
+            int x1=arr1.get(x);
+            int y2=arr2.get(y);
+            int z3=arr3.get(z);
+            if(x1==y2 && x1==z3){
+                list.add(x1);
+                
+                while(x<v1 && arr1.get(x)==x1)x++;
+                while(y<v2 && arr2.get(y)==x1)y++;
+                while(z<v3 && arr3.get(z)==x1)z++;
+
+            }else if(x1<y2){
+                x++;
+            }else if(y2<z3){
+                y++;
+            }else {
+                z++;
+            }
+        }
+        if(list.size()==0){
+            list.add(-1);
+        }
+        return list;
+    }
+}
