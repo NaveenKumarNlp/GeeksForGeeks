@@ -1,0 +1,12 @@
+class Solution {
+    int floorSqrt(int n) {
+        // code here
+        int val=0;
+        for(int i=1;i<=(n+1)/2;i++){
+            if(i*i<=n){
+                val=i;
+            }
+        }
+        return val;
+    }
+}
